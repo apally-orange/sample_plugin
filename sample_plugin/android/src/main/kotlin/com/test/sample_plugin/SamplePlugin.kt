@@ -25,6 +25,8 @@ class SamplePlugin: FlutterPlugin, MethodCallHandler {
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     if (call.method == "getPlatformVersion") {
       result.success("Android ${android.os.Build.VERSION.RELEASE}")
+      Thread.sleep(5000L)
+      channel.invokeMethod("test", null)
     } else {
       result.notImplemented()
     }
